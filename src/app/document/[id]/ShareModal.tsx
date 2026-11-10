@@ -21,7 +21,7 @@ export default function ShareModal({ documentId, onClose }: { documentId: string
       if (result?.error) {
         setErrorMsg(result.error)
       } else {
-        setSuccessMsg('¡Documento compartido exitosamente!')
+        setSuccessMsg('Document shared successfully!')
         setEmail('')
         setTimeout(() => {
           onClose()
@@ -41,31 +41,31 @@ export default function ShareModal({ documentId, onClose }: { documentId: string
         </button>
 
         <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-          <UserPlus className="h-5 w-5 text-blue-600" /> Compartir Documento
+          <UserPlus className="h-5 w-5 text-blue-600" /> Share Document
         </h2>
 
         <form onSubmit={handleShare} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
             <input 
               type="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
-              placeholder="usuario@collabdocs.com" 
+              placeholder="user@collabdocs.com" 
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Permisos</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Permissions</label>
             <select 
               value={role} 
               onChange={(e) => setRole(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white"
             >
-              <option value="viewer">Lector (Solo lectura)</option>
-              <option value="editor">Editor (Puede modificar)</option>
+              <option value="viewer">Viewer (Read only)</option>
+              <option value="editor">Editor (Can modify)</option>
             </select>
           </div>
 
@@ -85,7 +85,7 @@ export default function ShareModal({ documentId, onClose }: { documentId: string
               onClick={onClose} 
               className="px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
             >
-              Cancelar
+              Cancel
             </button>
             <button 
               type="submit" 
@@ -93,7 +93,7 @@ export default function ShareModal({ documentId, onClose }: { documentId: string
               className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
             >
               {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
-              Enviar invitación
+              Send Invitation
             </button>
           </div>
         </form>
